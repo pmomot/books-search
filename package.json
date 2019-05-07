@@ -1,0 +1,31 @@
+{
+    "name": "book-search",
+    "version": "0.0.0",
+    "description": "Simple app for book search",
+    "main": "webpack.config.js",
+    "scripts": {
+        "build": "webpack --progress --colors",
+        "build-prod": "webpack -p --progress --colors",
+        "start": " webpack-dev-server --mode development"
+    },
+    "dependencies": {
+        "breakpoint-sass": "^2.7.1",
+        "clean-webpack-plugin": "^2.0.2",
+        "codelyzer": "^5.0.1",
+        "css-loader": "^2.1.1",
+        "file-loader": "^3.0.1",
+        "node-sass": "^4.12.0",
+        "normalize.css": "^8.0.1",
+        "sass-loader": "^7.1.0",
+        "script-loader": "^0.7.2",
+        "style-loader": "^0.23.1",
+        "ts-loader": "^6.0.0",
+        "tslint": "^5.16.0",
+        "tslint-eslint-rules": "^5.4.0",
+        "typescript": "^3.4.5",
+        "webpack": "^4.30.0",
+        "webpack-cli": "^3.3.2",
+        "webpack-dev-server": "^3.3.1"
+    },
+    "author": "Petro Momot"
+}
