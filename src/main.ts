@@ -1,5 +1,6 @@
 import '../style/index.scss';
 import { addN } from './add-n';
+import { App } from './app';
 
 (function(){
     // task 1
@@ -9,6 +10,6 @@ import { addN } from './add-n';
     //
 
     document.addEventListener('DOMContentLoaded', () => {
-        console.log('app started');
+        const app = new App();
     });
 })();
