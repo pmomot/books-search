@@ -8,6 +8,6 @@ export class SubmitComponent extends HTMLElement {
 
     connectedCallback () {
         this.innerHTML = `<button>test</button>`;
-        fromEvent(this.firstChild, 'click').subscribe(() => store.initSearch$.next());
+        fromEvent(this.firstChild, 'click').subscribe(() => store.initSearch$.next('the lord of the rings'));
     }
 }

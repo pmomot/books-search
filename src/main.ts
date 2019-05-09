@@ -1,5 +1,6 @@
 import '../style/index.scss';
-import { addN } from './add-n';
+// import { SpeechRecognition } from './utils/speach-recognition';
+import { addN } from './utils/add-n';
 import { App } from './app';
 
 (function(){

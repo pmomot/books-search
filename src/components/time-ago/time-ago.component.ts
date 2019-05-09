@@ -1,6 +1,6 @@
 import { interval } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { getTimeDiffString } from '../../time';
+import { getTimeDiffString } from '../../utils/time';
 import { store} from '../../store';
 
 export class TimeAgoComponent extends HTMLElement {
