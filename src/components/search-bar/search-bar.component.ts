@@ -36,6 +36,7 @@ export class SearchBarComponent extends HTMLElement {
     }
 
     connectedCallback () {
+        // TODO remove hardcoded value
         this.innerHTML = `
             <div class="search-bar-inner">
                 <input type="text" placeholder="Search" value="lord of the rings"/>

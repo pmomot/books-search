@@ -23,6 +23,7 @@ export class BooksApi {
         fetch(`${ROUTES.search}?q=${encodeURI(query)}`)
             .then(response => response.json())
             .then(({docs}) => docs.filter(doc => doc.author_name && doc.isbn))
+            .then(docs => docs.slice(0, 10))
             .then(docs => {
                 result$.next(docs);
                 result$.complete();

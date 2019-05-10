@@ -1,8 +1,10 @@
 import { defineComponents } from './components';
 import { store } from './store';
+import { Slider } from './utils/slider';
 
 export class App {
-    readonly booksElement = document.getElementById('books');
+    private readonly booksElement = document.getElementById('books');
+    private slider: Slider;
 
     constructor () {
         defineComponents();
@@ -10,18 +12,26 @@ export class App {
 
         // TODO temp
         store.books$.subscribe(books => {
-            const elements = document.createElement('div');
+            if (this.slider) {
+                this.slider.destroy();
+                this.slider = null;
+            }
+
             this.booksElement.innerHTML = '';
             books.forEach(book => {
-                const element = document.createElement('div');
-                element.classList.add('card');
-                element.innerHTML += `<div class="card__image" style="background-image: url(${book.imageUrl})"></div>`;
-                element.innerHTML += `<div><span class="card__label">Title</span>: <span class="card__value">${book.title}</span></div>`;
-                element.innerHTML += `<div><span class="card__label">Authors</span>: <span class="card__value">${book.authors}</span></div>`;
-                element.innerHTML += `<div><span class="card__label">Languages</span>: <span class="card__value">${book.languages}</span></div>`;
-                elements.appendChild(element);
+                const slide = document.createElement('div');
+                slide.classList.add('slide');
+                slide.style.backgroundImage = `url(${book.imageUrl})`;
+                const details = document.createElement('div');
+                details.classList.add('slide__details');
+                details.innerHTML += `<div><span class="slide__label">Title</span>: <span class="slide__value">${book.title}</span></div>`;
+                details.innerHTML += `<div><span class="slide__label">Authors</span>: <span class="slide__value">${book.authors}</span></div>`;
+                details.innerHTML += `<div><span class="slide__label">Languages</span>: <span class="slide__value">${book.languages}</span></div>`;
+                slide.appendChild(details);
+                this.booksElement.appendChild(slide);
             });
-            this.booksElement.appendChild(elements);
+
+            this.slider = new Slider();
         });
     }
 }
