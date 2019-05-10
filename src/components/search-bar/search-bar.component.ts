@@ -1,7 +1,7 @@
 import { fromEvent, Subject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { store} from '../../store';
-import { speechRecognition } from '../../utils/speech-recognition'
+import { speechRecognition } from '../../utils/speech-recognition';
 
 export class SearchBarComponent extends HTMLElement {
     private componentDestroy$ = new Subject();
