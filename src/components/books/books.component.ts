@@ -7,6 +7,7 @@ import { store } from '../../store';
 
 export class BooksComponent extends HTMLElement {
     private readonly componentDestroy$ = new Subject();
+    private sliderInner: HTMLElement;
     private slider: Slider;
 
     constructor () {
@@ -19,18 +20,20 @@ export class BooksComponent extends HTMLElement {
             this.slider = null;
         }
 
-        this.innerHTML = '';
+        this.sliderInner.innerHTML = '';
         books.forEach(book => {
             const slide = new BookSlideComponent(book);
-            this.appendChild(slide);
+            this.sliderInner.appendChild(slide);
         });
 
         this.slider = new Slider();
     }
 
     connectedCallback () {
-        store.books$
-            .pipe(takeUntil(this.componentDestroy$))
+        this.sliderInner = this.querySelector('.slider-inner');
+        store.books$.pipe(
+            takeUntil(this.componentDestroy$)
+        )
             .subscribe(books => this.booksListUpdated(books));
     }
 

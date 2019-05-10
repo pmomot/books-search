@@ -19,8 +19,6 @@ export class Slider {
         this.target = document.querySelector('.slider');
         this.arrow = document.querySelectorAll('.slider__arrow');
         this.target.parentElement.classList.add('slider-wrapper--loaded');
-        // wrap into slider-inner
-        this.target.innerHTML = `<div class="slider-inner">${this.target.innerHTML}</div>`;
         this.sliderInner = this.target.querySelector('.slider-inner');
         this.init();
     }
@@ -48,7 +46,6 @@ export class Slider {
     }
 
     private updateDimension () {
-        console.log('upd dimension');
         this.slideWidth = this.target.querySelector('.slide:first-child')['offsetWidth'];
         this.updateInnerLeftPosition();
     }

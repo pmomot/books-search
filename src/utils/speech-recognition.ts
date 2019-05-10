@@ -20,8 +20,6 @@ export function speechRecognition () {
         const speechResult = event.results[0][0].transcript.toLowerCase();
         result$.next(speechResult);
         result$.complete();
-
-        console.log('Confidence: ' + event.results[0][0].confidence);
     };
 
     recognition.onspeechend = () => {
