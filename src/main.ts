@@ -1,5 +1,4 @@
 import '../style/index.scss';
-// import { SpeechRecognition } from './utils/speach-recognition';
 import { addN } from './utils/add-n';
 import { App } from './app';
 

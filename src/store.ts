@@ -1,5 +1,5 @@
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { BooksApi } from './api/books-api';
 import { BookModel } from './models/book.model';
 
@@ -9,15 +9,12 @@ export class Store {
         map(() => new Date()),
         shareReplay(1)
     );
-    readonly books$ = new BehaviorSubject<BookModel[]>([]);
+    readonly books$ = this.initSearch$.pipe(
+        switchMap(query => this.booksApi.search(query)),
+        map(list => list.map(book => new BookModel(book))),
+    );
 
-    constructor (private booksApi: BooksApi) {
-        this.initSearch$.subscribe(query => {
-            this.booksApi.search(query)
-                .then(list => list.map(book => new BookModel(book)))
-                .then(list => this.books$.next(list))
-        });
-    }
+    constructor (private booksApi: BooksApi) {}
 
 }
 
