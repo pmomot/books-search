@@ -26,7 +26,9 @@ export class BooksComponent extends HTMLElement {
             this.sliderInner.appendChild(slide);
         });
 
-        this.slider = new Slider();
+        if (books.length > 2) {
+            this.slider = new Slider();
+        }
     }
 
     connectedCallback () {
