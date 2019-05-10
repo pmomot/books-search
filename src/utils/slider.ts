@@ -11,7 +11,9 @@ export class Slider {
     private currentSlide = 0;
     private allSlides: NodeListOf<HTMLElement>;
     private isAnimating = false;
-    private nextSlideInterval$ = interval(3000);
+    private nextSlideInterval$ = interval(5000).pipe(
+        filter(() => !document.hidden)
+    );
 
     constructor () {
         this.target = document.querySelector('.slider');
