@@ -4,7 +4,7 @@ import { store} from '../../store';
 import { speechRecognition } from '../../utils/speech-recognition';
 
 export class SearchBarComponent extends HTMLElement {
-    private componentDestroy$ = new Subject();
+    private readonly componentDestroy$ = new Subject();
     private inputElement;
     private submitButton;
 

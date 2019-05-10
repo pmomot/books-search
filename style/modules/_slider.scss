@@ -17,6 +17,7 @@ $slide-height: calc(100vh - 146px);
   text-align: center;
   margin: 0 auto;
   overflow: hidden;
+  display: block;
 
   .slider-inner {
     position: absolute;
